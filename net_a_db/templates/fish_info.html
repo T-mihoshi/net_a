@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<main id="setting" class="form_table_box fish_info_top">
+    
+    <div class="form_table_item">
+        <h2 style="padding-top: 20px;">{{ fish_info.name }}</h2>
+
+        <div class="center">
+            <img src="{{ fish_info.preview.url }}" width="70%" style="max-width: 350px"> 
+        </div>
+        
+        <!-- ログイン状況によっていいねを表示 -->
+        {% if user.is_authenticated %}
+            <form action="{% url 'favorite_toggle' fish_info.id %}" method="post">
+                {% csrf_token %}
+                <div class="good_box good_end">
+                    <button type="submit">
+                        <img src="{% static 'img/good.jpg' %}" class="good" alt="" width="32px" height="32px">
+                    </button>
+                    <span class="good_count bottom">{{ good_count }}</span>
+                </div>
+            </form>
+        {% else %}
+            <div class="good_box good_end">
+                <img src="{% static 'img/good.jpg' %}" class="good" alt="" width="32px" height="32px">
+                <span class="good_count bottom">{{ good_count }}</span>
+            </div>
+        {% endif %}
+
+        <!-- 表示情報があれば表示 -->
+        <table id="color_bluck">
+
+            {% if fish_info.fish_size %}
+            <tr class="form_table">
+                <th>魚の大きさ</th><td>{{ fish_info.fish_size }}(cm)</td>
+            </tr>
+            {% endif %}
+            
+            {% if fish_info.aquarium_size %}
+            <tr class="form_table">
+                <th>水槽のサイズ</th><td>{{ fish_info.get_aquarium_size_display }}(cm)</td>
+            </tr>
+            {% endif %}
+            
+            {% if fish_info.temp %}
+            <tr class="form_table">
+                <th>飼育温度</th><td>{{ fish_info.get_temp_display }}(℃)</td>
+            </tr>
+            {% endif %}
+
+            {% if fish_info.category %}
+            <tr class="form_table">
+                <th>飼育情報</th><td>{{ fish_info.info }}</td>
+            </tr>
+            {% endif %}
+            
+            {% if fish_info.fish_mixed %}
+            <tr class="form_table">
+                <th>混泳できる魚</th><td>{{ fish_info.fish_mixed }}</td>
+            </tr>
+            {% endif %}
+            
+            {% if fish_info.food %}
+            <tr class="form_table">
+                <th>あげている餌</th><td>{{ fish_info.food }}</td>
+            </tr>
+            {% endif %}
+
+            {% if fish_info.material %}
+            <tr class="form_table">
+                <th><span class="font_mini"></span>用品、レイアウト</th><td>{{ fish_info.material }}</td>
+            </tr>
+            {% endif %}
+
+            {% if fish_info.gender %}
+            <tr class="form_table">
+                <th>性別</th><td>{{ fish_info.get_gender_display }}</td>
+            </tr>
+            {% endif %}
+
+            {% if fish_info.category %}
+            <tr class="form_table">
+                <th>＃タグ</th><td>{{ fish_info.get_category_display }}</td>
+            </tr>
+            {% endif %}
+
+        </table>
+            
+    </div>    
+</main>
+{% endblock %}
+

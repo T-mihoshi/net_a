@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main id="setting" class="form_table_box">
+    <div class="form_table_item">
+        <h2>魚情報の編集</h2>
+        {% if error_message %}
+        <div class="center">
+            <span class="error-message">{{ error_message }}</span>
+        </div>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table id="add_fish_form">
+                <tr class="form_table">
+                    <th>
+                    <div>写真（必須）</div>
+                    </th>
+                    <td>
+                        {{ fish_info_form.preview }}
+                    </td>
+                </tr>
+                <tr class="form_table" id="preview_bottom">
+                    <th style="padding: 0;">
+                        <div id="image_preview slide_image_item" style="margin-top: 20px;">
+                            <div>
+                                <img id="preview" src="" alt="プレビュー画像" style="max-width: 200px; max-height: 130px; display: none;">
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr class="form_table">
+                    <th>名前（必須）</th><td>{{fish_info_form.name}}</td>
+                </tr>
+                <tr class="form_table">
+                    <th>＃タグ</th><td>{{ fish_info_form.category }}</td>
+                </tr>
+                <tr class="form_table">
+                    <th>飼育温度</th><td>{{ fish_info_form.temp }}(℃)</td>
+                </tr>
+                <tr class="form_table">
+                    <th>魚の大きさ</th><td>{{ fish_info_form.fish_size }}(cm)</td>
+                </tr>
+                <tr class="form_table">
+                    <th>水槽のサイズ</th><td>{{ fish_info_form.aquarium_size }}(cm)</td>
+                </tr>
+                <tr class="form_table">
+                    <th>性別</th><td>{{ fish_info_form.gender }}</td>
+                </tr>
+                
+                <tr class="form_table">
+                    <th>飼育情報</th><td>{{ fish_info_form.info }}</td>
+                </tr>
+                <tr class="form_table">
+                    <th>混泳できる魚</th><td>{{ fish_info_form.fish_mixed }}</td>
+                </tr>
+                <tr class="form_table">
+                    <th>用品、レイアウト</th><td>{{ fish_info_form.material }}</td>
+                </tr>
+                <tr class="form_table">
+                    <th>あげている餌</th><td>{{ fish_info_form.food }}</td>
+                </tr>
+            </table>
+            <div class="center">
+                <button type="submit" class="button_css">保存</button>
+            </div>
+        </form>
+    </div>    
+</main>
+
+<script>
+window.onload = function() {
+    var existingImageUrl = "{{ fish_info.preview.url|default_if_none:'' }}";
+    var preview = document.getElementById('preview');
+    
+    if (existingImageUrl) {
+        preview.src = existingImageUrl;
+        preview.style.display = 'block';
+    }
+
+    document.getElementById('{{ fish_info_form.preview.id_for_label }}').onchange = function(event) {
+        var reader = new FileReader();
+        
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        };
+        
+        reader.readAsDataURL(event.target.files[0]);
+    };
+};
+</script>
+
+{% endblock %}

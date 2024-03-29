@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+<h2>閲覧履歴</h2>
+    <section class="list_image">
+        <div class="list_image_box">
+            {% for history in histories %}
+            <a href="{% url 'fish_info' history.fish.id %}">
+                <div class="list_image_item">
+                    <div>
+                        <div>{{ history.fish.name }}</div>
+                        {% if history.fish.preview %}
+                        <img src="{{ history.fish.preview.url }}" alt="{{ history.fish.name }}" width="100%">
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+            {% empty %}
+                <div class="center_none"><div>閲覧履歴はありません。</div></div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load static %}
+<main style="padding: 0 15px;">
+    <h2 style="padding-top: 40px;">検索（検索結果）</h2>
+    <div class="center">
+        <div>
+            <div class="search_help">ネオンテトラを検索したい場合、タグの名前（例：テトラ）や、魚の名前の一部分（例：ネオン）でも検索ができます</div>
+            <!--<div>タグ一覧は<a href="{% url 'tag_list' %}">こちら</a>を確認！</div>-->
+            <div class="center">
+                <form method="post" action="{% url 'search_fish_info' %}">
+                    {% csrf_token %}
+                    <div class="center" style="flex-wrap: wrap; align-items: center;">
+                        <input type="text" name="q" placeholder="魚の名前を入力してください" style="width: 250px; height: 30px; margin-right: 10px;">
+                        <div class="center">
+                            <button type="submit" class="button_css" style="width: 100px;">検索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% if fish_info_search.exists %}
+    <section class="list_image">
+        <div class="list_image_box">
+        {% for fish_info in fish_info_search %}
+            <a href="{% url 'fish_info' fish_info.id %}">
+            {% if fish_info.preview %}            
+                <div class="list_image_item">
+                    <div>
+                        <div>{{ fish_info.name }}</div>
+                        <img src="{{ fish_info.preview.url }}" alt="{{ fish_info.name }}" width="100%">
+                    </div>
+                </div>
+            {% endif %}
+            </a>
+        {% endfor %}
+        </div>
+    </section>
+    {% elif error %}
+    <div class="center">
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+</main>
+
+{% endblock %}

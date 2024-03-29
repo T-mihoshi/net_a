@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<main>
+    <section>
+        <div class="user_profile">
+            <h2 style="margin-top: 80px;">プロフィール設定</h2>
+            <div class="icon-container">
+                <a href="{% url 'icon_change' %}">
+                    <img src="{{ user_profile.icon.icon_file_name.url }}" class="icon" alt="アイコンを選ぼう！">
+                </a>
+                <a href="{% url 'icon_change' %}">
+                    <img src="{% static 'img/icon_change.png' %}" class="icon-change" alt="アイコンを変更するボタン">
+                </a>
+            </div>
+            <table>
+                <tr class="form_table">
+                    <th>ユーザー名</th><td>{{ user_profile.user.username }}</td>
+                </tr>
+                <tr class="form_table">
+                    <th>メールアドレス</th><td>{{ user_profile.user.email }}</td>
+                </tr>
+            </table>
+            <div class="center">
+                <div class="center">
+                    <a class="setting_edit_button" href="{% url 'setting_edit' %}">プロフィールを編集する</a>
+                </div>
+            </div>
+            
+            <div class="center">
+                <div class="center">
+                    <a class="setting_edit_button" href="{% url 'setting_password' %}">パスワードを変更する</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

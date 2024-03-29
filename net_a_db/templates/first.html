@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<main id="tutorial">
+    <div class="tutorial_end_box">
+        <div class="tutorial_end_item">
+            <a href="{% url 'my_page' %}"><div class="close-button">✕</div></a>
+        </div>
+    </div>
+    <h1>Netaとは</h1>
+    <p><span class="color_sky">Net</span><span class="color_blue">a</span>(
+        <span class="color_green">ねった</span>)とは、<span class="color_green">ねった</span>いぎょへの理解を深め、
+        <span class="color_sky">Net</span>で<span class="color_blue">a</span>quariumライフを充実させるために作られたアプリです。</p>
+    <p>熱帯魚には様々な種類がありますが、その多くは名前も聞いたことのない種類ばかりです。</p>
+    <p>その種類、数万種類にもおよぶ魚がいるなか、インターネットにすら飼育情報のない魚も複数います。</p>
+    <p>そんな中、飼育方法が確かでない魚を飼育している人の情報を参考にすることで、飼育をより充実させよう！</p>
+    <p>Netaにはこういった目的があります。</p>
+    <p>みんなでアクアリウム界隈を盛り上げていきましょう！</p>
+    
+    <a href="{% url 'my_page' %}">
+        <h1 class="net_a_strat">さぁ！</h1><h1 class="net_a_strat">はじめよう！！</h1>
+    </a>
+</main>
+{% endblock %}

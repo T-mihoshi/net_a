@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<main class="form_table_box">
+    <div class="form_table_item">
+    <h2 style="margin-top: 40px;">新規会員登録</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if user_form.errors or profile_form.errors %}
+            <div class="center">
+                <div>
+                    <p class="alert alert-danger color_red">入力事項に誤りがあります。</p>
+                    <p class="alert alert-danger color_red">確認して再度入力してください。</p>
+                </div>
+            </div>
+        {% endif %}
+
+        <!--<div class="icon-container">
+            <a href="{% url 'icon_change' %}">
+                <img src="{{ user_profile.icon.icon_file_name.url }}" class="icon" alt="アイコンを選ぼう！">
+            </a>
+            <a href="{% url 'icon_change' %}">
+                <img src="{% static 'img/icon_change.png' %}" class="icon-change" alt="アイコンを変更するボタン">
+            </a>
+        </div>-->
+        <table>
+            <tr class="form_table">
+                <th>ユーザー名</th><td>{{ user_form.username }}</td>
+            </tr>
+            <tr class="form_table">
+                <th class="add_user_help">使える記号、@/./+/-/_</th>
+            </tr>
+            <tr class="form_table">
+                <th>メールアドレス</th><td>{{ user_form.email }}</td>
+            </tr>
+            <tr class="form_table">
+                <th class="add_user_help">有効なメールアドレスを入力</th>
+            </tr>
+            <tr class="form_table">
+                <th>パスワード</th><td>{{ user_form.password1 }}</td>
+            </tr>
+            <tr class="form_table">
+                <th>
+                    <div class="add_user_help add_user_help_indent">6文字以上名前などと似ない情報</div>
+                    <div class="add_user_help">数字のみ、簡易な物は不可</div>
+                </th>
+            </tr>
+            <tr class="form_table">
+                <th>パスワード(確認用)</th><td>{{ user_form.password2 }}</td>
+            </tr>
+            <!-- パスワード確認フィールドは UserForm には存在しないため、必要であればカスタムフィールドを追加する必要がある -->
+        </table>
+        <div class="center">
+            <div class="add_user_privacy">利用規約は<a href="{% url 'privacy' %}">こちら</a></div>
+        </div>
+        {% if profile_form.errors %}
+            <div class="alert alert-danger">
+                <strong>Profile Form Errors:</strong>
+                {{ profile_form.errors }}
+            </div>
+        {% endif %}
+        
+        <div class="center">
+            <button type="submit" class="button_css">登録</button>
+        </div>
+    </form>
+</div>
+</main>
+{% endblock %}

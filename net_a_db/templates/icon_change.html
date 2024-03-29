@@ -1,0 +1,21 @@
+<!-- icon_change.html -->
+
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<main>
+    <div class="choice_icon_box">
+        {% for icon in icons %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="icon_id" value="{{ icon.id }}">
+            <button type="submit" class="choice_icon">
+                <img src="{{ icon.icon_file_name.url }}" alt="{{ icon.icon_name }}" width="100px" height="100px">
+            </button>
+        </form>
+        {% endfor %}
+    </div>
+</main>
+
+{% endblock %}

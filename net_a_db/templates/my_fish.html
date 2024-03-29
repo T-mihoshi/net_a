@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<main class="">
+    <h2>自分の投稿</h2>
+    <section class="list_image">
+        <div class="list_image_box">
+        {% for fish_info in my_fishs %}
+            <a href="{% url 'edit_fish_info' fish_info.id %}">
+                <div class="list_image_item">
+                    <div>
+                        <div>{{ fish_info.name }}</div>
+                        <img src="{{ fish_info.preview.url }}" alt="{{ fish_info.name }}" width="100%">
+                    </div>
+                </div>
+            </a>
+            {% empty %}
+                <div class="center_none"><div>まだ、記事を投稿していません</div></div>
+        {% endfor %}
+        
+        </div>
+    </section>
+</main>
+{% endblock %}

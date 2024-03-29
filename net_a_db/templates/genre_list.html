@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<main class="">
+    <h1>Fish Information by Genre</h1>
+    {% for fish_info in fish_infos_genre %}
+        <div>
+            <a href="{% url 'fish_info' fish_info.id %}">
+                <h2>{{ fish_info.name }}</h2>
+                <img src="{{ fish_info.image.url }}" alt="{{ fish_info.name }}">
+            </a>
+        </div>
+    {% endfor %}
+</main>
+{% endblock %}

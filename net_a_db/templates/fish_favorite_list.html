@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<main class="">
+    <h2>人気の魚</h2>
+    <section class="list_image">
+        <div class="list_image_box">
+        {% for fish_info in fish_favorite_list %}
+            <a href="{% url 'fish_info' fish_info.id %}">
+            {% if fish_info.preview %}            
+                <div class="list_image_item">
+                    <div>
+                        <div>{{ fish_info.name }}</div>
+                        <img src="{{ fish_info.preview.url }}" alt="{{ fish_info.name }}" width="100%">
+                    </div>
+                </div>
+            {% endif %}
+            </a>
+        {% endfor %}
+        </div>
+    </section>
+
+</main>
+{% endblock %}

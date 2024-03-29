@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<main class="my_page">
+    <div class="name_box">
+        <p><span class="login_name">{{ user.username }}</span>さん、こんにちは！</p>
+    </div>
+    <section class="my_menu">
+        <div class="my_menu_item"> 
+            <a href="{% url 'setting' %}">ステータス</a>
+            <a href="{% url 'index' %}">ホーム</a>
+            <a href="{% url 'favorite_list' %}">お気に入り</a>
+            <a href="{% url 'history' %}">閲覧履歴</a>
+            <a href="{% url 'add_fish' %}">記事を投稿</a>
+            <a href="{% url 'my_fish' %}">自分の魚</a>
+            <a href="{% url 'user_logout' %}">ログアウト</a>
+            <!--
+            <a href="{% url 'admin:index' %}">管理画面</a>-->
+        </div>
+    </section>
+</main>
+{% endblock %}

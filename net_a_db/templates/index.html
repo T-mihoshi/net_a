@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<main>
+    <div class="menu">
+    <!--<p>現在の登録魚種！〇〇種類</p>
+        <p>現在の合計投稿数！〇〇件</p>
+    -->
+        
+        
+        <h2 class="left">最新の投稿</h2>
+        <section class="slide_image">
+            {% for fish_info in fish_infos %}
+                <a href="{% url 'fish_info' fish_info.id %}">
+                {% if fish_info.preview %}            
+                    <div class="slide_image_item">
+                        <div>
+                            <div>{{ fish_info.name }}</div>
+                            <img src="{{ fish_info.preview.url }}" alt="{{ fish_info.name }}" width="100%">
+                        </div>
+                    </div>
+                {% endif %}
+                </a>
+            {% endfor %}
+        </section>
+        <div class="more_list"><a href="{% url 'fish_new_list' %}">もっと見る≫</a></div>
+
+        <h2 class="left">人気の魚</h2>
+        <section class="slide_image">
+        {% for fish_info_favorite in fish_infos_favorites %}
+            <a href="{% url 'fish_info' fish_info_favorite.id %}">
+            {% if fish_info_favorite.preview %}            
+                <div class="slide_image_item">
+                    <div>
+                        <div>{{ fish_info_favorite.name }}</div>
+                        <img src="{{ fish_info_favorite.preview.url }}" alt="{{ fish_info_favorite.name }}" width="100%">
+                    </div>
+                </div>
+            {% endif %}
+            </a>
+        {% endfor %}
+        </section>
+        <div class="more_list"><a href="{% url 'fish_favorite_list' %}">もっと見る≫</a></div>
+
+        <h2 class="left">大きい魚</h2>
+        <section class="slide_image">
+            {% for fish_info_size in fish_infos_size %}
+                <a href="{% url 'fish_info' fish_info_size.id %}">
+                {% if fish_info_size.preview %}            
+                    <div class="slide_image_item">
+                        <div>
+                            <div>{{ fish_info_size.name }}</div>
+                            <img src="{{ fish_info_size.preview.url }}" alt="{{ fish_info_size.name }}" width="100%">
+                        </div>
+                    </div>
+                {% endif %}
+                </a>
+            {% endfor %}
+        </section>
+        <div class="more_list"><a href="{% url 'fish_size_list' %}">もっと見る≫</a></div>
+
+        <!--<h2>珍しい魚</h2>
+        <section class="slide_image">
+            {% for fish_info in fish_infos %}
+                <a href="{% url 'fish_info' fish_info.id %}">
+                {% if fish_info.preview %}            
+                    <div class="slide_image_item">
+                        <div>
+                            <div>{{ fish_info.name }}</div>
+                            <img src="{{ fish_info.preview.url }}" alt="{{ fish_info.name }}" width="100%">
+                        </div>
+                    </div>
+                {% endif %}
+                </a>
+            {% endfor %}
+        </section>
+        <div class="more_list"><a href="{% url 'fish_new_list' %}">もっと見る</a></div>
+        <h2>＃タグから探す</h2>
+        <section>
+            <h3>淡水魚</h3>
+            <div class="category">
+                <div>ポリプテルス</div>
+                <div>アロワナ</div>
+                <div>プレコ</div>
+                <div>パクー</div>
+                <div>カラシン(テトラなど)</div>
+                <div>プラティ・メダカなど</div>
+                <div>ローチ</div>
+                <div>エンゼルフィッシュ</div>
+                <div>ディスカス</div>
+                <div>シクリッド</div>
+                <div>コリドラス</div>
+                <div>キクラ</div>
+                <div>エイ</div>
+                <div>ベタ</div>
+                <div>ナマズ</div>
+                <div>フグ</div>
+                <div>エビ・貝・カニ</div>
+                <div>汽水魚</div>
+                <div>その他熱帯魚</div>
+                <div>金魚</div>
+                <div>鯉</div>
+                <div>その他淡水魚</div>
+            </div>
+            <h3>海水魚</h3>
+            <div class="category">
+                <div>ヤッコ</div>
+                <div>チョウチョウウオ</div>
+                <div>ハギ</div>
+                <div>スズメダイ</div>
+                <div>クマノミ</div>
+                <div>アジ</div>
+                <div>タイ</div>
+                <div>カレイ・ヒラメ</div>
+                <div>ベラ</div>
+                <div>ハゼ</div>
+                <div>ギンポ</div>
+                <div>ハタ</div>
+                <div>カサゴ</div>
+                <div>フグ</div>
+                <div>カワハギ</div>
+                <div>エイ・サメ</div>
+                <div>タコ・イカ</div>
+                <div>ウニ・ナマコ</div>
+                <div>クラゲ</div>
+                <div>エビ・貝・カニ（海）</div>
+                <div>その他海水魚</div>
+            </div>
+            実現しない<h3>魚の特徴</h3>
+            <div class="category">
+                <div>混泳が得意な魚</div>
+                <div>泳ぎが得意な魚</div>
+                <div>単独飼育推奨</div>
+                <div>小型魚</div>
+                <div>中型魚</div>
+                <div>大型魚</div>
+                <div>回遊魚・青魚</div>
+                <div>底もの</div>
+                <div>観賞魚</div>
+                <div>卵</div>
+                <div>幼魚</div>
+                <div>肉食魚</div>
+                <div>長細い魚</div>
+                <div>古代魚</div>
+            </div>
+        </section>-->
+    </div>
+</main>
+
+<!-- サーバーにアップ -->
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<!--スライドショーにslickを使う・ローカルだからhttp:を入れる-->
+<!-- ローカル -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<!--static-->
+<!--<script type="text/javascript" src="{% static 'js/slick/jquery-1.11.0.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slick/jquery-migrate-1.2.1.min.js' %}"></script>-->
+
+<script type="text/javascript" src="{% static 'js/slick/slick.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.slide_image').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 4
+        });
+    });
+</script>
+{% endblock %}

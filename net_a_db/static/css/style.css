@@ -1,0 +1,834 @@
+/*サイドの余白を削除*/
+body{
+    margin: 0;
+    padding-top: 70px;
+}
+
+body *{
+    box-sizing: border-box;
+    text-decoration: none;
+    color: rgb(22, 22, 22);
+    font-family:serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+main {
+    min-height: 100vh;
+    background-color:#f5fbfd;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    z-index: 5;
+}
+
+h2, h3{
+    font-family: fantasy;
+}
+
+h2{
+    text-align: center;
+}
+
+h3{
+    margin-left: 10px;
+}
+
+#preview_bottom{
+    margin-bottom: 0;
+}
+
+th, td {
+    text-align: left; /* thタグ内のテキストを左寄せにする */
+    padding: 10px;
+    color: rgb(46, 46, 46);/* CSSプロパティ */
+    vertical-align: top;
+}
+
+th {
+    min-width: 160px;
+    max-width: 250px;
+    width: auto;
+    font-size: 16px;
+    text-align: start;
+}
+
+td {
+    font-family: sans-serif;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.bottom{
+    display: flex;
+    align-items: end;
+}
+
+.form_table_box{
+    display: flex;
+    justify-content: center;
+}
+
+.left{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.form_table_item{
+    max-width: 630px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    font-weight: normal;
+    text-align: start;
+}
+
+.form_table{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.textarea-style{
+    width: 300px;
+    height: 70px;
+}
+
+.input-style{
+    width: 204px;
+    height: 22px;
+}
+
+.int-style{
+    width: 60px;
+    height: 22px;
+}
+
+
+/*ヘッダー上メニュー*/
+header{
+    width: 100%;
+    padding-top: 20px;
+    /*縦、横中央揃え*/
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img/header.PNG');
+    /*background-color: rgb(173, 243, 255);*/
+    position: fixed;
+    z-index: 10;
+    top: 0;
+}
+
+.header_menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header_flex_image{
+    display: flex;
+}
+
+.logo{
+    height: 65px;
+    width: 65px;
+    transition: opacity 0.8s ease; /* 透明度の変化を滑らかに */
+}
+
+.net_a_strat{
+    margin-top: 30px;
+    font-size: 40px;
+    font-family: sans-serif;
+    color:rgb(15, 127, 255)
+}
+
+.net_a_strat:hover{
+    opacity: 0.5; /* 50%の透明度に */
+}
+
+/* ホバー時の画像の透明度を変更 */
+.logo:hover {
+    opacity: 0.5; /* 50%の透明度に */
+}
+
+.icon{
+    border-radius: 50%;
+}
+
+.home{
+    width: 45px;
+    height: 45px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 7px;
+    width: 45px;
+    height: 45px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 7px;
+}
+
+.search_menu{
+    display: flex;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.search_filter{
+    width: 70px;
+    height: 34px;
+    text-align: center;
+}
+
+.search_ber{
+    width: auto;
+    min-width: 150px;
+    height: 34px;
+    margin-right: 30px;
+    text-align: center;
+}
+
+.header_space{
+    width: 35px;
+}
+
+.separator_line{
+    background-color: rgb(80, 210, 230);
+    height: 2px;
+    background:-moz-linear-gradient(to right, rgb(36, 91, 194), #2bffff);
+    box-shadow: 0 4px 8px rgba(31, 2, 43, 0.5);
+    z-index: 999;
+}
+
+.header_link{
+    color: #02001a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.header_link:hover{
+    color: #2c7896
+}
+
+/*動的css、フォーム*/
+.form {
+    display: flex; /* フレックスボックスコンテナとして設定 */
+    flex-direction: column; /* 子要素を縦方向に並べる */
+    align-items: flex-start; /* 子要素をコンテナの開始側（左側）に揃える */
+    gap: 10px; /* 子要素の間に10pxの隙間を設ける */
+}
+
+.form_menu{
+    margin-top: 10px;
+    display: flex;
+    width: 340px;
+    align-items: flex-start;
+}
+
+.button_css{
+    width:100px;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #67a7e2;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.button_css:hover{
+    background-color: #2c7896;
+    color: #ffffff;
+}
+
+#register_link{
+    padding-top: 10px;
+    color: #0f2fa1;
+}
+
+.login_name{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+
+/*メイン ホーム*/
+.add_user_help{
+    color: #726f6f;
+    font-size: 11px;
+    padding-top: 0;
+    padding-bottom: 20px;
+}
+
+.add_user_help_indent{
+    padding-bottom: 5px;
+}
+
+.add_user_privacy{
+    font-size: 13px;
+}
+
+.add_user_privacy a{
+    font-size: 15px;
+    color: #0051c2;
+}
+
+.add_user_privacy{
+    font-size: 13px;
+}
+
+.add_user_privacy a{
+    font-size: 15px;
+    color: #0051c2;
+}
+
+#tutorial {
+    position: relative; /* ::before疑似要素の位置決めの基準点とする */
+    overflow: hidden; /* 疑似要素のはみ出しを防ぐ */
+    text-align: center;
+    padding: 20px;
+}
+
+#tutorial::before {
+    content: ''; /* 疑似要素にはcontentプロパティが必要です。 */
+    position: absolute; /* 親要素に対して絶対位置指定します。 */
+    inset: 0; /* top, right, bottom, left すべてを 0 に設定 */
+    background-image: url('../img/logo_back1.PNG'); /* 背景画像を指定します。 */
+    background-size: 30%; /* 画像のサイズを元の50%に設定します。 */
+    background-repeat: no-repeat; /* 画像の繰り返しをなくします。 */
+    background-position: center; /* 画像を要素の中央に配置します。 */
+    opacity: 0.1; /* 透明度を50%に設定します。 */
+    pointer-events: none; /* 疑似要素上のマウスイベントを無視します。 */
+}
+
+.tutorial_end_box{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tutorial_end_item .close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* 幅を設定 */
+    height: 50px; /* 高さを設定 */
+    padding: 0;
+    margin: 30px;
+    background-image: linear-gradient(135deg, #d69c9c, #ff1722); /* グラデーションの背景 */
+    color: #ffffff;
+    font-size: 24px; /* 文字サイズを大きく */
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%; /* 完全な円形 */
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.tutorial_end_item .close-button:hover {
+    background-image: linear-gradient(135deg, #f38f8f, #ee8585);
+}
+
+.slide_image_item {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden; /* はみ出した画像を非表示にする */
+    background-color: rgb(23, 23, 23); /* 親要素の背景色を設定（任意） */
+    aspect-ratio: 1 / 0.8; /* 縦横比を1:1に保持 */
+}
+
+.slide_image_item div {
+    object-fit: cover; /* 縦横比を保ちながら親要素いっぱいに表示 */
+    object-position: center; /* 画像を中央に配置 */
+}
+
+.slide_image_item div{
+    font-size: 12px;
+    margin-top: 2px;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.list_image_box{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    
+}
+
+.list_image_item {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    background-color: rgb(23, 23, 23);
+    aspect-ratio: 1 / 0.8; /* 縦横比を1:1 */
+}
+
+.list_image_item div {
+    object-fit: cover; /* 縦横比を保ちながら親要素いっぱいに表示 */
+    object-position: center; /* 画像を中央に配置 */
+}
+
+.list_image_item div{
+    font-size: 12px;
+    margin-top: 2px;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.more_list{
+    display: flex;
+    justify-content: end;
+}
+
+.more_list a{
+    font-size: 20px;
+    font-weight: bold;
+    color: #0051c2;
+    margin-right: 30px;
+    margin-top: 5px;
+}
+
+.fish_info button{
+    padding: 0;
+}
+
+.good_box{
+    display: flex;
+    
+}
+
+.good_count{
+    font-size: 25px;
+    font-family: sans-serif;
+    margin-left: 20px;
+}
+
+.good_end{
+    justify-content: end;
+    margin-right: 55px;
+    margin-top: 8px;
+}
+
+#setting th{
+    width: 130px;
+}
+
+#setting td{
+    font-size: 13px;
+}
+
+.setting_input{
+    width: 250px;
+    font-size: 15px;
+}
+
+.error-message{
+    color: rgb(245, 39, 39);
+}
+
+.search_help {
+    max-width: 380px;
+    font-size: 13px;
+    color: #454545;
+    margin-bottom: 10px;
+}
+
+.category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.category div{
+    width: 80px;
+    height: 60px;
+    font-size: 10px;
+    /*background-image: url('image/logo.PNG');*/
+}
+
+/*マイページ*/
+.my_page{
+    background: linear-gradient(rgb(160, 252, 255), rgb(135, 144, 283));
+}
+
+.my_menu{
+    display: flex;
+    justify-content: center;
+}
+
+.my_menu_item{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 700px;
+    justify-content: center;
+    gap: 40px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.name_box p{
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: end;
+}
+
+.my_menu_item img{
+    height: 150px;
+    width: 150px;
+}
+
+.my_menu_item a{
+    height: 150px;
+    width: 150px;
+    background: linear-gradient(rgba(205, 252, 229, 0.297), rgba(100, 155, 228, 0.132));
+    border-radius: 75px;
+    border: 4px solid #c3fafa;
+    font-size: 20px;
+    color: rgb(7, 0, 70);
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1; /* 縦横比を1:1に保持 */
+}
+
+.add_fish_form{
+    font-size: 8px;
+}
+
+/*個人設定*/
+#setting{
+    padding: 20px 30px;
+}
+
+.icon_setting{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.user_profile{
+    display: flex;
+    text-align: center;
+    flex-flow: column;
+    align-items:center;
+}
+
+.icon-container {
+    position: relative; /* 子要素の絶対位置付けの基準点 */
+    width: 200px;
+    height: 200px;
+    margin-bottom: 30px;
+}
+
+.icon-container .icon {
+    width: 200px;
+    height: 200px;
+    display: block; /* インライン要素からブロック要素へ変更 */
+    height: auto; /* アスペクト比を保持 */
+}
+
+.icon-change {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer; /* ホバー時にカーソルを変更 */
+}
+
+.user_profile table{
+    font-size: 12px;
+}
+
+.setting_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input_text{
+    width: 70%;
+    max-width: 300px;
+
+}
+
+.choice_icon_box{
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 50%;
+}
+
+
+.choice_icon{
+    width: 102px;
+    height: 102px;
+    padding: 0;
+}
+
+.button{
+    width: 100px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.color_red{
+    color: rgb(236, 54, 54);
+}
+
+#color_bluck{
+    color:#1f1f1f;
+}
+
+.color_sky{
+    font-size: 23px;
+    color: #16c9c9;
+    font-weight: 600;
+}
+
+.color_blue{
+    font-size: 25px;
+    color: rgb(77, 77, 207);
+    font-weight: 600;
+}
+
+.color_green{
+    color: rgb(28, 134, 28);
+    font-weight: 600;
+}
+
+#privacy{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#privacy h3{
+    padding-left: 0;
+}
+.center_none{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: #454545;
+}
+
+#preview{
+    width: 200px;
+    height: 140px;
+}
+
+.setting_edit_button{
+    width:210px;
+    height: 40px;
+    line-height: 40px;
+    margin: 12px 0px;
+    background-color: #67a7e2;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.setting_edit_button:hover{
+    background-color: #2c7896;
+    color: #ffffff;
+}
+
+
+/*footer*/
+#footer_menu{
+    padding-top: 30px;
+    padding-left: 5%;
+    padding-bottom: 30px;
+    /*background-color: rgb(173, 243, 255);*/
+    background-image: url('../img/footer.PNG');
+}
+
+.footer_font{
+    font-weight: bold;
+    color: #393939;
+    font-family: sans-serif;
+}
+
+.footer_font:hover{
+    color: #6b6f7a;
+}
+
+.footer_font1{
+    font-weight: bold;
+    color: #393939;
+    font-family: sans-serif;
+}
+
+.footer p{
+    margin-right: 30px;
+}
+
+/*-----------------------レスポンシブデザイン----------------------*/
+@media screen and (max-width: 450px)
+{
+    body{
+        padding-top: 50px;
+    }
+    
+    header{
+        padding-top: 0px;
+    }
+    
+    table {
+        margin-left: 5px;
+    }
+
+    #setting{
+        padding: 5px;
+    }
+
+    th{
+        min-width: 120px;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    tr{
+        font-size: 10px;
+    }
+
+    .add_user_help{
+        font-size: 8px;
+    }
+
+    .header_space{
+        width: 10px;
+    }
+
+    .center_space{
+        width: 100%;
+    }
+
+    .logo{
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+
+    .header_menu {
+        display: contents;
+    }
+
+    .search_left {
+        display: contents;
+    }
+
+    /*mein*/
+
+    h2 {
+        font-size: 17px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    .font_mini{
+        font-size: 11px;
+        margin-right: 0;
+    }
+
+    .slide_image_item div{
+        font-size: 7px;
+    }
+
+    .list_image_item {
+        width: 80px;
+    }
+    
+    .list_image_item div{
+        font-size: 5px;
+    }
+
+    .category div{
+        width: 50px;
+        height: 38px;
+        font-size: 8px;
+        /*background-image: ;*/
+    }  
+
+    .name_box p{
+        height: 70px;
+        padding-bottom: 0;
+    }
+
+    .my_menu_item{
+        gap: 30px;
+    }
+
+    .my_menu_item a{
+        height: 120px;
+        width: 120px;
+        font-size: 15px;
+    }
+    
+    .my_menu_item div{
+        border-radius: 75px;
+    }
+
+    .search_help {
+        font-size: 10px;
+    }
+
+    .textarea-style{
+        width: 200px;
+    }
+
+    .input-style{
+        width: 200px;
+    }
+
+    .more_list a{
+        font-size: 13px;
+    }
+
+    /*個人設定*/
+    .icon_setting img{
+        width: 150px;
+        height: 150px;
+    }
+    
+    .setting_box div{
+        font-size: 10px;
+    }
+
+    .center_none{
+        font-size: 15px;
+    }
+
+    .setting_input{
+        width: 205px;
+        font-size: 11px;
+    }
+}
+
