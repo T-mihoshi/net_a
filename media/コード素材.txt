@@ -1,0 +1,57 @@
+レジストレーション
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" value="登録">
+    </form>
+
+ビューズ
+def register(request):
+    user_form = UserForm(request.POST or None)
+    profile_form = ProfileForm(request.POST or None, request.FILES or None)
+    if user_form.is_valid() and profile_form.is_valid():
+        user = user_form.save()
+        user.set_password(user.password)
+        user.save()
+        profile = profile_form.save(commit=False)
+        profile.user = user
+        profile.save()
+    return render(request, 'registration.html', context={
+        'user_form': user_form,
+        'profile_form': profile_form,
+    })
+
+フォームズ
+
+from django import forms
+from django.contrib.auth.models import User
+from net_a_db.models import Profile
+
+class UserForm(forms.ModelForm):
+    username = forms.CharField(label='名前')
+    email = forms.EmailField(label='メールアドレス')
+    password = forms.CharField(label='パスワード', widget=forms.PasswordInput())
+    
+    class Meta():
+        model = User
+        fields = ('username', 'email', 'password')
+
+class ProfileForm(forms.ModelForm):
+    website = forms.URLField(label='ホームページ')
+    picture = forms.FileField(label='写真')
+    
+    class Meta():
+        model = Profile
+        fields = ('website', 'picture')
+
+
+モデル
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    website = models.URLField(blank=True)
+    picture = models.FileField(upload_to='user/', blank=True)
+
+    def __str__(self):
+        return self.user.username
+
